@@ -1,0 +1,45 @@
+@import 'https://fonts.googleapis.com/css?family=Abril+Fatface';
+
+body {
+    background-color: #efd469;
+}
+
+article {
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Abril Fatface', Georgia, serif;
+}
+
+#legacy p, #legacy ol, .english {
+    color: #333333;
+}
+
+#quotes h3 {
+    font-style: italic;
+}
+
+p:first-letter {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+a:visited {
+    color: blue;
+}
+a:hover {
+    text-decoration: none;
+}
+
+section {
+    border: 1px dashed #777777;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#legacy ol {
+    list-style-type: none; 
+    list-style-image: url('https://img.frasicelebri.it/images/thumb_person-charles-babbage.40x40_q95_box-308,41,705,438.jpg');
+}
