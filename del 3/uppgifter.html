@@ -1,0 +1,299 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body><h1>Del 3 - Javascript</h1>
+<p>I del 3 ska vi lägga till lite (onödig) funktionalitet till webbsidan om Ada Lovelace. Vi gör detta med Javascript. Föreläsningsmaterialet ger viss grund att stå på, men som vanligt är <a href="http://www.w3schools.com/js/">W3Schools</a> att rekommendera.
+Kompendiet ger viss grund att utgå från, men <a href="http://www.w3schools.com/cssref/default.asp">den här listan på W3Schools</a> är betydligt bättre.</p>
+<p>Utgå från förra arbetet du gjorde i förra delen. Om du inte gjorde klart den, så finns det en version att hämta hem från <a href="http://www.idioti.se/ada2.html">http://www.idioti.se/ada2.html</a>.</p>
+<h2>Uppgifterna</h2>
+<h3>Uppgift 1: Förberedelser</h3>
+<p>Vi kommer i den här laborationen att utgå från webbläsaren <a href="https://www.google.com/chrome/browser/desktop/index.html">Chrome</a> (eller <a href="http://chromium.woolyss.com/">Chromium</a>, om du föredrar den). Vi gör detta eftersom vi vill använda den webbläsarens Javascript-konsol, som är betydligt trevligare än många andra. Den finns dessutom till både Windows, macOS och Linux, vilket förenklar saker betänkligt. Har du inte Chrome eller Chromium redan - <a href="https://www.google.com/chrome/browser/desktop/index.html">installera den</a>.</p>
+<p>Färdig? Bra. Nu vill vi förbereda vår HTML-fil för lite Javascript-kärlek. Öppna filen i din webbläsare (dvs Chrome/Chromium), samt i en texteditor. Lägg till ett <code>&lt;script&gt;</code>-element i headern. Så här:</p>
+<pre><code>&lt;head&gt;
+  &lt;title&gt;Ada Lovelace&lt;/title&gt;
+  &lt;script&gt;
+  &lt;/script&gt;
+  ...
+</code></pre>
+<p>När du laddar om sidan kommer du att se att absolut ingenting förändras. Det är precis som det ska vara. Ändras något, så har det blivit fel någonstans. Vi kan testa Javascript-funktionaliteten med ett väldigt kort Javascript. Så här:</p>
+<pre><code>&lt;script&gt;
+  alert('Hello, World!');
+&lt;/script&gt;
+</code></pre>
+<p>Ladda om sidan nu. Vad händer? Vad verkar alert() göra? När du funderat ut det, kan du glatt ta bort Javascript-koden igen, men behåll <code>&lt;script&gt;</code>-elementet.</p>
+<hr />
+<h3>Uppgift 2: Att använda konsolen</h3>
+<p>Vi ska nu bekanta oss med Chromes Javascript-konsol. Gå till din Ada-sida och tryck på <code>F12</code>-tangenten. Nu öppnas konsolen upp. Det ser ut så här:</p>
+<p><img src="http://www.idioti.se/bilder/console.png" alt="Konsolen" /></p>
+<p>Den nedre delen är din konsol. Med den kan du interagera med Chromes Javascript-tolk. Testa genom att klicka i den och mata in några matematiska uttryck och se vad du får för svar. Så här kan det se ut:</p>
+<pre><code>&gt; 1 + 4
+&lt; 5
+</code></pre>
+<p>Tolken fungerar lite grann som Python-tolken; det går att mata in hela program i den om du verkligen vill (det vill du inte). Det är ett kraftigt verktyg för att testa dina Javascript-skills. Vi kan exempelvis testa att skapa en variabel:</p>
+<pre><code>&gt; let name = 'Ada';
+&lt; undefined
+</code></pre>
+<p>Den där <code>undefined</code>-utskriften betyder bara att inmatningen inte hade något returvärde. Det är precis som det ska vara.</p>
+<p>Nu kan vi använda variabeln för att göra saker. Vi kan börja med att skriva ut den genom att bara skriva variabelnamnet i konsolen:</p>
+<pre><code>&gt; name
+&lt; &quot;Ada&quot;
+</code></pre>
+<p>Det går så klart att göra saker fler saker med variabeln än att skriva ut den. Vi kan exempelvis slå samman den med andra textsträngar och se vad som händer:</p>
+<pre><code>&gt; &quot;Hallå &quot; + name + &quot;!&quot;
+&lt; &quot;Hallå Ada!&quot;
+</code></pre>
+<p>Du kommer snart att märka att det här sättet att skriva uttryck och förvänta sig en utskrift är begränsat. Försök exempelvis att skriva en for-loop och se vad som händer:</p>
+<pre><code>&gt; for (let i = 0; i &lt; 3; i++) { name }
+&lt; &quot;Ada&quot;
+</code></pre>
+<p>Vi får bara en utskrift istället för tre. Varför? Tolken skriver bara det sista returvärdet. Det är inte bra. Ett bättre sätt är att skriva ut till konsolen med <code>console.log()</code>. Förutom att den skriver ut allt som du matar in i funktionen i konsolen, har den även fördelen att du kan använda funktionen i Javascript som ligger i HTML-dokument. Vi testar igen:</p>
+<pre><code>&gt; for (let i = 0; i &lt; 3; i++) { console.log(name + i) }
+  Ada0
+  Ada1
+  Ada2
+&lt; undefined
+</code></pre>
+<p>Anledningen till att vi skrev ut <code>name + i</code> är att konsolen slår samman likadana utskrifter för att spara plats. Testa att ta bort <code> + i</code> och testa igen.</p>
+<p>Tips: Börjar det bli trångt i konsolen? Tryck <code>ctrl + l</code> (eller möjligtvis <code>alt + l</code> på macOS) för att tömma utskrifterna. Alla variabler finns kvar ändå.</p>
+<p>Tips 2: En kul sak med Chromes konsol är att du kan skriva in ett HTML-elements id. Du får då se hur det elementets HTML-kod ser ut. Om vi testar att skriva ut <em>quotes</em>, ser det ut så här:</p>
+<p><img src="http://www.idioti.se/bilder/quotes.png" alt="Citat" /></p>
+<p>Tips 3: Konsolen är en del av Chromes utvecklarverktyg, som du kan göra en massa annat kul med. Klicka runt bland flikarna och se vad de gör. Fliken <em>Elements</em> har bäring på vad vi gjort under laboration 1 och 2, exempelvis.</p>
+<hr />
+<h3>Uppgift 3: Användarhändelser - Några fåniga påskägg</h3>
+<p>Som utvecklare är det din uppgift att leverera en bra produkt. Det innebär inte att man inte får ha kul medan man gör det. Många digitala produkter innehåller någon form av bus, kallade <em>påskägg</em> (kolla exempelvis mau.se-koden och se om du hittar ett där). Naturligtvis vill även vi ha ett påskägg på vår sida. Vårt väldigt enkla påskägg går ut på att en hälsning till <a href="https://sv.wikipedia.org/wiki/Charles_Babbage">Charles Babbage</a> visas för användaren när denna klickar på sidans huvudrubrik. För att göra detta måste vi kunna göra två saker:</p>
+<ol>
+<li>Detektera att användaren har tryckt på ett objekt.</li>
+<li>Skriva ut en text till användaren.</li>
+</ol>
+<p>Vi börjar direkt.</p>
+<p>Med Javascript kan vi lyssna efter ett <a href="http://www.w3schools.com/js/js_events_examples.asp">flertal olika händelser</a> som användaren kan initiera. Vi är intresserade efter att lyssna efter ett klick. Det enklaste sättet att göra detta på är att använda HTML-attributet <em>onclick</em>. Det fungerar så här:</p>
+<pre><code>&lt;element onclick=&quot;javascript_code;&quot;&gt;
+</code></pre>
+<p><em>onclick</em> kan vi lägga på alla element under <code>&lt;body&gt;</code>-elementet (utom <code>&lt;br&gt;</code>, eftersom det elementet aldrig syns). Översätter vi det till vår kod, ser det ut så här:</p>
+<pre><code>&lt;h1 onclick=&quot;javascript_code;&quot;&gt;Ada Lovelace&lt;/h1&gt;
+</code></pre>
+<p>Ladda om sidan och klicka på rubriken. Titta sedan i konsolen och se om du hittar en felutskrift som säger att <code>javascript_code</code> inte finns. Konsolen har naturligtvis helt rätt. Vi byter ut <code>javascript_code</code> mot <code>alert('Hi Charles!')</code> och får då följande kodsnutt:</p>
+<pre><code>&lt;h1 onclick=&quot;alert('Hi Charles!');&quot;&gt;Ada Lovelace&lt;/h1&gt;
+</code></pre>
+<p>Ladda om sidan igen, klicka på rubriken och se vad som händer.</p>
+<p>Lägg till några fler påskägg av samma typ till några olika element. Experimentera med lite olika händelsetyper. En hyfsat jobbig “feature” skulle kunna vara att visa en popup-ruta med en onödig text så fort användaren drar muspekaren över biografi-sektionen. Använd dokumentationen på <a href="http://www.w3schools.com/js/js_events_examples.asp">W3Schools</a> och fundera ut hur du realiserar detta.</p>
+<hr />
+<h3>Uppgift 4: Funktioner, URLer och fönster - Citat och översättningar</h3>
+<p>Påskägg är förstås roliga, men det går att göra andra, lite nyttigare saker med Javascript. Vi tänker oss två saker:</p>
+<ol>
+<li>Vi har en sektion med citat. Genom att klicka på dem vill vi ta oss till deras källor (som vi angav med <em>cite</em>-attributet i den första labben).</li>
+<li>Det finns lite engelska fraser utspridda i texten. Vi vill kunna översätta dem genom att klicka på dem.</li>
+</ol>
+<h4>Funktioner och objekt - Citaten</h4>
+<p>För att bygga den första punkten måste vi först lägga in <em>onclick</em>-attribut i alla tre <code>&lt;blockquote&gt;</code>-elementen. Vi måste också fylla de här attributen med Javascript-kod så att vi kan öppna URL:en som vi lagt i <em>cite</em>-attributet. Koden kommer att se ungefär likadan ut, så vi konstaterar att det är lämpligt att skapa en funktion för detta. Vi bestämmer oss för att namnge funktionen till <code>goToSource()</code>. Gå till <code>&lt;script&gt;</code>-elementet i toppen av filen och skriv följande:</p>
+<pre><code>function goToSource(quote) {
+    console.log(quote);
+}
+</code></pre>
+<p>Vad gör den här funktionen? Fundera lite på det innan vi går vidare. (tips på vägen: <code>quote</code> kommer att vara det <code>&lt;blockquote&gt;</code>-element som användaren klickar på).</p>
+<p>Vi återgår till citat-sektionen och fyller i våra <em>onclick</em>-attribut med Javascript-koden <code>goToSource(this)</code>. Detta innebär att vi kommer att skicka det element som användaren klickar på (<code>this</code>) till vår nyss skapade funktion. Spara filen, ladda om sidan i webbläsaren och klicka på ett av citaten. Nu borde det här hända:</p>
+<p><img src="http://www.idioti.se/bilder/blockquote.png" alt="Utskrift av ett blockquote-element" /></p>
+<p>Det här elementet kan vi nu hantera i vår <code>goToSource()</code>. Element representeras som objekt i Javascript, där varje attribut går att nå så här:</p>
+<pre><code>element.attribute;
+</code></pre>
+<p>Vi skulle exempelvis kunna ändra <em>cite</em>-attributet så här för att göra det lite mindre trovärdigt:</p>
+<pre><code>quote.cite = 'http://www.4chan.org';
+</code></pre>
+<p>Märk väl att vårt <code>&lt;blockquote&gt;</code>-element har fått namnet <code>quote</code> när det skickades till funktionen.</p>
+<p>Det finns ett speciellt attribut som de flesta elementen kan ha: <code>innerHTML</code>. Det är den text som förekommer mellan ett elements två taggar. I fallet med våra <code>&lt;blockquote&gt;</code> är det alltså själva citatet. För att komma åt det skriver vi <code>quote.innerHTML</code>. Vi kan testa det genom att skriva ut bara citatet i konsolen. Vi ändrar vår funktion till</p>
+<pre><code>function goToSource(quote) {
+    console.log(quote.innerHTML);
+}
+</code></pre>
+<p>Spara, ladda om och testa att klicka på ett citat nu. Nu borde citatet skrivas ut i loggen, men vi har ännu inte lyckats öppna <em>cite</em>-attributets värde i ett fönster än. Det måste vi göra.</p>
+<p>Vi kan öppna en URL i ett fönster på två olika sätt: antingen genom att öppna ett nytt fönster eller i det nuvarande fönstret. För att öppna i ett nytt fönster skriver vi</p>
+<pre><code>window.open(url);
+</code></pre>
+<p>och för att öppna i det nuvarande fönstret skriver vi</p>
+<pre><code>document.location = url;
+</code></pre>
+<p>Vi vill öppna adressen i ett nytt fönster och uppdaterar vår funktion till</p>
+<pre><code>function goToSource(quote) {
+    console.log(quote.innerHTML);
+    window.open(quote.cite);
+}
+</code></pre>
+<p>Spara, ladda om och testa att klicka på ett citat igen. Nu borde det fungera som tänkt.</p>
+<h4>Callback-funktioner och anrop av externa tjänster och - Översättning av engelska fraser</h4>
+<p>Ibland vill vi bygga egna URLer för att kunna hämta resurser, exempelvis om vi vill konsumera en webbtjänst. Här vill vi skicka en fras på engelska till en översättningstjänst (se där, ett REST-anrop!). Vi börjar med att skapa en funktion i <code>&lt;script&gt;</code>-elementet:</p>
+<pre><code>function translatePhrase(phrase) {
+}
+</code></pre>
+<p>Nästa steg är att lägga <em>onclick</em>-attribut i de element som innehåller engelska fraser som anropar <code>translatePhrase()</code> med det nyss klickade elementet. När detta är gjort återgår vi till <code>translatePhrase()</code> och bygger vidare på den. Vi använder oss av Google Translate, och för att översätta en text kan vi anropa <a href="https://translate.google.com/?sl=en&amp;tl=sv&amp;op=translate&amp;text=">https://translate.google.com/?sl=en&amp;tl=sv&amp;op=translate&amp;text=</a>.</p>
+<pre><code>function translatePhrase(phrase) {
+  // Först tar vi ut texten:
+  let text = phrase.innerHTML;
+
+  // Sen skapar vi en URL
+  let url = &quot;https://translate.google.com/?sl=en&amp;tl=sv&amp;op=translate&amp;text=&quot;;
+}
+</code></pre>
+<p>Nu är vi en bit på väg. För att kunna skicka en sträng med mellanslag måste vi omvandla dessa till ett format som går att skicka som en URL-parameter. Vi gör detta med Javascript-funktionen <code>encodeURI(string)</code>. Den omkodade strängen läggs till den befintliga URLen för att skapa en fullständig URL:</p>
+<pre><code>function translatePhrase(phrase) {
+  // Först tar vi ut texten:
+  let text = phrase.innerHTML;
+
+  // Sen skapar vi en URL
+  let url = &quot;https://translate.google.com/?sl=en&amp;tl=sv&amp;op=translate&amp;text=&quot; + encodeURI(text);
+}
+</code></pre>
+<p>Allra sist ska URLen öppnas i ett nytt fönster. Lägg till kod för det, spara, ladda om och testa. Fungerar det? Bra jobbat!</p>
+<p>När du som utvecklare bygger lite större applikationer, kommer du att inse att det inte alltid är hållbart att använda attribut som <em>onclick</em> på varje element som ska ges funktionalitet. Vi kan istället använda Javascript-funktionen <code>addEventListener()</code> för att ange den här typen av funktionalitet dynamiskt. Det kan se ut så här:</p>
+<pre><code>document.querySelector(&quot;#quotes&quot;).addEventListener(&quot;click&quot;, console.log);
+</code></pre>
+<p>Detta kan inte läggas i HTML-dokumentets huvud, eftersom koden körs innan hela dokumentet lästs in. Därför måste du flytta <code>&lt;script&gt;</code>-elementet som ligger i dokumentets huvud allra sist i dokumentets <code>&lt;body&gt;</code>-element och lägga in ovanstående kod sist där.</p>
+<p>Vi går igenom <code>querySelector()</code> och dess kompis <code>querySelectorAll()</code> noggrannare senare i uppgiften.</p>
+<p>Vad händer när du laddar om sidan och klickar på elementet med ID:t “quotes” (det är texten “Citat av Ada Lovelace”)? Något skrivs ut i konsolen, men det är ingen text. Det du får se är ett <code>event</code>-objekt, som innehåller all tänkbar information om vad som nyss hänt. Öppna gärna upp det och undersök det. Vi är framförallt intresserade av attributet <code>target</code>. Parkera det i minnet ett litet slag.</p>
+<p>Varför anropades <code>console.log()</code> överhuvudtaget? Och varför skickades ett event? Jo, vi har använt oss av en <em>callback-funktion</em>. I Javascript kan en variabel vara data och objekt på samma sätt som i Python eller Java, men även en <strong>referens till en funktion</strong>. Det är just vad <code>console.log</code> är. Vi skickar alltså med en referens till funktionen när vi anropar <code>addEventListener()</code>. Denna funktion körs sedan när användaren klickar på det utpekade elementet. Webbläsaren passar också på att skicka med det <code>event</code>-objekt som vi såg ovan.</p>
+<p>Testa nu att byta ut namnet på den funktion som vi vill anropa till <code>translatePhrase</code> så att det ser ut så här i din kod:</p>
+<pre><code>document.querySelector(&quot;#quotes&quot;).addEventListener(&quot;click&quot;, translatePhrase);
+</code></pre>
+<p>Ladda om sidan och klicka på rubriken “Citat av Ada Lovelace” igen. Du tas nu till Google Translate, men det verkar inte riktigt fungera. Detta beror på att det du får inte är en fras, utan det där eventet igen. Förändra funktionen <code>translatePhrase</code> för att ta hänsyn till det:</p>
+<pre><code class="language-js">function translatePhrase(event) {
+	// Först tar vi ut texten:
+	let text = event.target.innerHTML;
+
+	// Sen skapar vi en URL
+	let url = &quot;https://translate.google.com/#en/sv/&quot; + encodeURI(text);
+	window.open(url);
+}
+</code></pre>
+<p><code>event.target</code> pekar på det element som användaren klickade på. Ladda om sidan, och klicka på elementet igen. Nu fungerar det bättre, men inte riktigt så som vi tänkt oss. Tanken var ju att det här skulle köras när vi klickade på element som var skrivna på engelska, inte på den där rubriken. De element vi är intresserade av är av klassen <code>.english</code>. Vi hittar dessa genom att köra <code>document.querySelectorAll(&quot;.english&quot;)</code>, vilket returnerar en lista över alla element som matchar regeln. Vi sätter sedan beteendet för varje enskilt element genom att ersätta raden</p>
+<pre><code class="language-js">document.querySelector(&quot;#quotes&quot;).addEventListener(&quot;click&quot;, translatePhrase);
+</code></pre>
+<p>med</p>
+<pre><code class="language-js">document.querySelectorAll(&quot;.english&quot;).forEach((element) =&gt; {
+	element.addEventListener(&quot;click&quot;, translatePhrase);
+});
+</code></pre>
+<p>Ladda om sidan och klicka på något av elementen som innehåller engelsk text. Nu fungerar det. Wohoo!</p>
+<p>Det vi ser här är två nya saker: en <code>forEach</code>-metod och en <em>anonym funktion</em>. Vi bryter ner det lite:</p>
+<p><code>forEach</code>-metoden är en metod som tillhör list-objekt i Javascript. Med hjälp av den kan vi köra en funktion på varje element i listan. Metodsignaturen ser ut så här: <code>List.forEach(function)</code>, där funktionen tar ett objekt som argument. Funktionen här fungerar på samma sätt som i <code>addEventListener()</code> ovan.</p>
+<p>Men vi skickar väl inte med någon funktion till <code>forEach()</code> Eller? Jo, vi skickar med en <em>anonym funktion</em>, en funktion som inte deklareras förrän den används. Den ser ut så här <code>(parameters) =&gt; { code }</code>. Just vår anonyma funktion,</p>
+<pre><code class="language-js">(element) =&gt; {
+	element.addEventListener(&quot;click&quot;, translatePhrase);
+}
+</code></pre>
+<p>tar in ett enda argument, som vi kallar <code>element</code>. På varje element kör vi sedan <code>addEventListener(&quot;click&quot;, translatePhrase)</code>.</p>
+<p>Anonyma funktioner och callback-funktioner ser luriga ut i början, men efter ett tag vänjer du dig vid det. Javascript-utvecklare gör sånt här hela tiden.</p>
+<hr />
+<h3>Uppgift 5: Javascript och DOM - Vi förändrar saker</h3>
+<p>Vi kan, som vi såg i förra uppgiften, förändra HTML-dokumentet med hjälp av Javascript. Förutom att lägga till händelser, förändra attribut och liknande kan vi även lägga till och ta bort element i dokumentet. Vi kan exempelvis lägga till ett element i vårt dokument genom att skriva följande i konsolen:</p>
+<pre><code>let textnode = document.createTextNode(&quot;The busy have no time for tears.&quot;);
+document.querySelector('#quotes').appendChild(textnode);
+</code></pre>
+<p>Sidan borde nu se ut något i den här stilen:</p>
+<p><img src="http://www.idioti.se/bilder/byron.png" alt="Lord Byron diktar lite" /></p>
+<p>Noden vi skapar är fristående tills det att vi väljer ut ett element att lägga den i, vilket i detta fall innebär att texten hamnar inne i det <code>&lt;section&gt;</code>-element som heter <em>quotes</em>. Vi kan på samma sätt ta bort ett element. Även detta kan vi göra i konsolen:</p>
+<pre><code>document.querySelector('#quotes').removeChild(textnode);
+</code></pre>
+<p>Fräckt! Det innebär att vi kan göra våra webbsidor betydligt mer dynamiska än tidigare. För att testa det, bestämmer vi oss för att lägga till lite nya påskägg:</p>
+<ol>
+<li>När användaren klickar på ett <code>&lt;h3&gt;</code>-element, byts texten ut mot “<em>George Boole was here</em>”.</li>
+<li>“<em>George Boole was here</em>” är så klart engelska, så den texten måste kunna översättas.</li>
+<li>När fyra <code>&lt;h3&gt;</code>-element har klickats på, ska alla engelska texter bli fetstilta och rosa.</li>
+<li>När användaren håller muspekaren över någon av de tre bilderna byter bakgrunden färg.</li>
+</ol>
+<p>Nu kör vi igång!</p>
+<h4><em>George Boole was here</em></h4>
+<p>Det första vi ska göra är att byta ut en <code>&lt;h3&gt;</code>-rubrik när användaren klickar på den. Vårt första steg blir att skapa en funktion, som vi döper till <code>booleify()</code>. Funktionen ser ut så här:</p>
+<pre><code>function booleify(elementId) {
+    document.querySelector(elementId).innerHTML = &quot;George Boole was here&quot;;
+}
+</code></pre>
+<p>Vad händer här? <code>element</code> är det aktuella HTML-element som vi vill förändra (i vårt fall ett specifikt <code>&lt;h3&gt;</code>-element). Attributet <code>.innerHTML</code> innehåller all HTML-kod som innesluts av elementet. Vi stötte på detta i uppgift 4.</p>
+<p>Nästa steg är att koppla händelser till <code>booleify()</code>. Vi gör detta genom att lägga till fler eventlyssnare till element, som i förra uppgiften. Koden ser ut så här:</p>
+<pre><code>document.querySelectorAll(&quot;h3&quot;).forEach((element) =&gt; {
+	element.addEventListener(&quot;click&quot;, (event) =&gt; {
+		booleify(event.target);
+	});
+});
+</code></pre>
+<p>Notera att vi skickar med ett element här, och därför inte behöver söka upp det igen i <code>booleify()</code>, så vi kan bygga om den lite:</p>
+<pre><code>function booleify(element) {
+    element.innerHTML = &quot;George Boole was here&quot;;
+}
+</code></pre>
+<p>Det här har vi gjort tidigare, men för att sammanfatta:</p>
+<ol>
+<li>I det första anropet till <code>querySelectorAll(string)</code> skickar vi med strängen “h3”. Detta betyder “<em>ge mig en lista över alla <code>&lt;h3&gt;</code>-element i dokumentet</em>”. Det här fungerar precis som selektorerna i CSS. På samma sätt fungerar <em>#</em> precis som id-selektorn i CSS, och på samma sätt kan vi använda <em>.klassnamn</em> för att välja alla element av en speciell klass. Metoden <code>querySelector(string)</code> fungerar på samma sätt, men returnerar som mest ett enda element.</li>
+<li>För varje element i listan lägger vi till en eventlyssnare med <code>addEventListener(event)</code> och skickar med en anonym funktion.</li>
+<li>Den inre anonyma funktionen tar ett <code>event</code> som parameter och plockar ut elementet ur det, och skickar sedan detta till funktionen <code>booleify()</code> som vi skrev ihop tidigare.</li>
+</ol>
+<p>Spara dokumentet, ladda om sidan och klicka på någon av <code>&lt;h3&gt;</code>-rubrikerna och se vad som händer.</p>
+<h4>Markera ut <em>George Boole was here</em> som engelska</h4>
+<p>Vi kan även förändra ett elements utseende. Ett enkelt sätt är att lägga till eller ta bort ett elements CSS-klass. Detta är väldigt enkelt att göra. I funktionen <code>booleify()</code> lägger vi till följande rad:</p>
+<pre><code>element.classList.add('english');
+</code></pre>
+<p>Det är allt. Spara, ladda om och klicka på en rubrik. Märk väl att den byter färg till rätt nyans av grått.</p>
+<h4>Byt till rosa efter fyra klick</h4>
+<p>Nu blir det lite mer avancerat. Vår specifikation säger att all engelsk text ska bli rosa när vi bytt ut fyra <code>&lt;h3&gt;</code>-rubriker. Det innebär att vi måste hålla koll på hur många rubriker som bytts ut. Vi inför en variabel, <code>booleCounter</code>, som håller koll på detta. Lägg <code>booleCounter</code> högst upp i det övre <code>&lt;script&gt;</code>-elementet. Så här:</p>
+<pre><code>&lt;script&gt;
+    let booleCounter = 0;
+    ...
+</code></pre>
+<p><code>booleCounter</code> är nu en global variabel (usch!) som vi kan använda oss av i alla funktioner. Vi skapar ytterligare en global variabel, <code>const boolePhrase = &quot;George Boole was here&quot;;</code>, som vi lägger under <code>booleCounter</code>. Nyckelordet <code>const</code> innebär att värdet är en konstant som inte kommer att förändras.</p>
+<p>Nu kan vi återgå till <code>booleify()</code> och skriva om logiken i funktionen:</p>
+<pre><code>function booleify(element) {
+	if (element.innerHTML !== boolePhrase) {
+		element.innerHTML = boolePhrase;
+		element.classList.add('english);
+		booleCounter++;
+	}
+}
+</code></pre>
+<p>Vad händer här nu? Vi tittar på om det aktuella elementets text är outbytt (lägg märke till <code>!==</code> för att jämföra de båda strängarna). Om texten är outbytt, byts den ut. Vi passar också på att räkna upp räknaren med ett (om du är van vid Python kan det se konstigt ut, men <code>booleCounter++</code> kan översättas till <code>booleCounter = booleCounter + 1</code>).</p>
+<p>Vad återstår nu? Vi skulle ju byta ut färgen om vi bytt ut fyra av rubrikerna. Då så. Då gör vi det. Vi bygger ut <code>booleify()</code> så att den ser ut så här:</p>
+<pre><code>function booleify(element) {
+	if (element.innerHTML !== boolePhrase) {
+		element.innerHTML = boolePhrase;
+		element.classList.add('english);
+		booleCounter++;
+        if (booleCounter === 4) {
+            document.querySelectorAll(&quot;.english&quot;).forEach((element) =&gt; {
+            	element.style.color = 'pink';
+            	element.style.fontWeight = 'bold';
+            });
+        }
+	}
+}
+</code></pre>
+<p>Vad är nytt här? Vi gör en ny jämförelse (lägg märke till <code>===</code>) och om vi gjort fyra uppdateringar, ska allt engelskt bli rosa och fetstilt. Med hjälp av <code>querySelectorAll('.english')</code> hittar vi alla element av klassen <em>english</em>. På dessa objekt kör vi sedan en anonym funktion som ändrar CSS-värdena <code>color</code> till <em>pink</em> och <code>font-weight</code> till <em>bold</em>.</p>
+<p>Spara, ladda om och testa. Fungerar det? Visst är det vackert?</p>
+<h4>Ny bakgrundsfärg</h4>
+<p>För att byta bakgrundsfärg behöver vi veta vilka tre färger vi ska använda. Vit, cyan och spygrön verkar vara tre roliga färger. Dessutom behöver vi ha koll på den nuvarande färgen. Dessa fyra har följande värden i CSS:</p>
+<ul>
+<li>vit: <em>white</em></li>
+<li>cyan: <em>cyan</em></li>
+<li>spygrön: <em>#87fd23</em></li>
+<li>nuvarande färg: <em>#efd469</em></li>
+</ul>
+<p>Vi måste också kunna identifiera de tre bilderna. Gå in i HTML-dokumentet och ge varje bild ett id-attribut. Vi kan döpa dem till <em>img1</em>, <em>img2</em> och <em>img3</em>, Det är inga supernamn, men de fungerar.</p>
+<p>När vi nu kan identifiera bild-elementen, kan vi låta dem få <em>hover</em>-funktionalitet. Så här ser det ut:</p>
+<pre><code>document.querySelector(&quot;#img1&quot;).addEventListener(&quot;mouseover&quot;, (event) =&gt; {
+	document.querySelector(&quot;body&quot;).style.backgroundColor = 'white';
+});
+
+document.querySelector(&quot;#img1&quot;).addEventListener(&quot;mouseout&quot;, (event) =&gt; {
+	document.querySelector(&quot;body&quot;).style.backgroundColor = '#efd469';
+});
+</code></pre>
+<p>Oj! Här kom lite nya saker som vi måste förhålla oss till:</p>
+<ol>
+<li>Eftersom vi här bara är ute efter ett enskilt element, kan vi använda <code>querySelector()</code> istället för <code>querySelectorAll()</code> och slippa undan <code>forAll()</code>.</li>
+<li>Vi ser här två nya <code>event</code>-typer, nämligen <em>mouseover</em>, som genereras när vi drar in muspekaren över ett element, och <em>mouseout</em>, som genereras när vi flyttar muspekaren från ett element.</li>
+<li>När vi registrerat ett att muspekaren är över ett element, vill vi byta ut bakgrundsfärgen mot vit. För att byta ut bakgrundsfärgen måste vi hämta elementet <code>&lt;body&gt;</code>, vilket görs med <code>document.querySelector(&quot;body&quot;)</code>.</li>
+<li>Vi måste sätta tillbaka bakgrundsfärgen när vi tar bort muspekaren igen.</li>
+</ol>
+<p>Spara dokumentet, ladda om och rör muspekaren över den på den första bilden. Fungerade det? Bra. Lägg till liknande funktionalitet till de två andra bilderna med, men med andra färger.</p>
+<hr />
+<h3>Uppgift 6: Externa filer</h3>
+<p>Det här är det sista steget. Om vi vill kunna återanvända vårt Javascript måste vi bryta ut det i en extern fil. Skapa en fil och döp den till exempelvis <em>ada.js</em>. Öppna filen. Klipp ut allt som står mellan <code>&lt;script&gt;</code> och <code>&lt;/script&gt;</code> och klistra in det i den nya filen. Spara filen och ladda om sidan. Vad händer?</p>
+<p>Vi måste länka in <em>ada.js</em> i vårt dokument på något sätt. Det är väldigt enkelt. Lägg till ett attribut i det nu tomma <code>&lt;script&gt;</code>-elementet som heter <em>src</em> och ange <em>ada.js</em> som värde. Ladda om. Nu ska det fungera.</p>
+<hr />
+<h3>Ytterligare arbete</h3>
+<p>Mer än så här är inte planerat. Lek runt med Javascript. Förändra utseendet på sidan dynamiskt med CSS. Titta på de guider och exempel som finns på W3Schools och andra ställen.</p>
+<p>Ha kul!</p>
+</body></html>
