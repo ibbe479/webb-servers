@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Johans enhörningsdatabas</title>
+  <meta charset="UTF-8">
+  <!-- 
+  För att separera listan och infon från varandra kan man lägga till lite
+  CSS-styling. Är du inte bekväm med CSS kan du läsa om det på exempelvis
+  http://www.w3schools.com/css.
+  -->
+  <style type="text/css">
+  table {
+    border-spacing: 10px;
+    border-collapse: separate;
+    cellspacing: 100px;
+    width: 1200px;
+  }
+  td {
+    border: 1px solid black;
+    padding: 10px;
+  }
+  </style>
+</head>
+
+<body>
+  <h1>Johans enhörningsdatabas</h1>
+  <table>
+    <tr>
+      <td id="list">
+        <ul id ="unicorns">
+          <li><a href="">enhörning 1</a></li>
+          <li><a href="">enhörning 2</a></li>
+          <li><a href="">enhörning 3</a></li>
+        </ul>
+      </td>
+
+      <td id="info">
+        <h2 id="unicornName">Ingen enhörning</h2>
+        <img src="" alt="" id="unicornImage" >
+        <p id="unicornSighting"></p>
+        <p id="unicornInfo"></p>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
