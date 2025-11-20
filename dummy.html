@@ -4,6 +4,9 @@
     <title>Ada Lovelace</title>
     <meta charset="utf-8"> 
     <script>
+         function goToSource(quote) {
+        console.log(quote);
+    }
     </script>
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -17,7 +20,7 @@
     <article>
             
         <section id="ingress">
-            <h2 title="Inledning om Ada Lovelace">Inledning</h2>
+            <h2 onmouseover="style.color='red'" onmouseout="style.color='black'">Inledning</h2>
             <p>
                 Ada Lovelace, egentligen Augusta Ada King, grevinna av Lovelace, född Byron 10 december 1815 i London, död där 27 november 1852, var en engelsk matematiker och skribent. Hon är mest hågkommen för sitt arbete med Charles Babbages mekaniska dator, den analytiska maskinen. Hennes anteckningar om maskinen innehåller den första algoritm som är avsedd att bearbetas med en maskin. Därför beskrivs hon ofta som historiens första datorprogrammerare.
             </p>
@@ -27,7 +30,7 @@
         </section> 
         
         <section id="biography">
-            <h2>Biografi</h2>                    
+            <h2 >Biografi</h2>                    
             <h3>Barndom</h3>
             <p>
                 Ada Lovelace föddes 10 december 1815 som dotter till George Gordon Byron, den 6:e baronen av Byron, och Anne Isabella "Annabella" Milbanke, baronessa av Byron. George Byron förväntade sig att hans nya ättling skulle vara en pojke och blev besviken när hans fru födde fram en flicka. Den nyfödda gavs namnet Augusta efter Byrons halvsyster Augusta Leigh och kallades av Byron själv för "Ada".
@@ -70,7 +73,7 @@
         <section id="quotes">
             <h2>Citat av Ada Lovelace</h2>
             <h3>Ada inser att matematiska uttryck kan användas till annat än att hantera siffror</h3>
-            <blockquote cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
+            <blockquote onclick="go" cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
                 Den analytiska maskinen skulle kunna arbeta med andra ting vid sidan om tal, objekt vars ömsesidiga grundläggande relationer kunde uttryckas genom abstrakta vetenskapliga operationer, vilka också kan vara mottagliga för förändringar i hur maskinen hanterar de olika operationerna och i dess mekanism...
             </blockquote>
             <h3>Ada förkastar artificiell intelligens</h3>
