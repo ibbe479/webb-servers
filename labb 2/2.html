@@ -42,6 +42,34 @@
       </td>
     </tr>
   </table>
+
+  <script>
+    // 1. Bas-URL för API:et
+    const baseURL = "http://unicorns.idioti.se/";
+
+    // 2. Skapa den asynkrona funktionen
+    async function listUnicorns() {
+      // 3. Konfigurera fetch-anropet för att få JSON
+      const options = {
+        method: "GET",
+        headers: {
+          "Accept": "application/json" 
+        }
+      };
+      
+      // 4. Gör anropet och invänta svaret
+      const response = await fetch(baseURL, options);
+      
+      // 5. Avkoda svaret till ett JSON-objekt
+      const unicorns = await response.json();
+      
+      // 6. Logga listan till konsolen (för att testa)
+      console.log(unicorns);
+    }
+
+    // 7. Anropa funktionen när scriptet laddas
+    listUnicorns(); 
+</script>
 </body>
 
 </html>
