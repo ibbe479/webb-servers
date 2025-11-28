@@ -117,7 +117,7 @@ Påskägg är förstås roliga, men det går att göra andra, lite nyttigare sak
 
 För att bygga den första punkten måste vi först lägga in *onclick*-attribut i alla tre `<blockquote>`-elementen. Vi måste också fylla de här attributen med Javascript-kod så att vi kan öppna URL:en som vi lagt i *cite*-attributet. Koden kommer att se ungefär likadan ut, så vi konstaterar att det är lämpligt att skapa en funktion för detta. Vi bestämmer oss för att namnge funktionen till `goToSource()`. Gå till `<script>`-elementet i toppen av filen och skriv följande:
 
-    function goToSource(quote) {
+    function goToSource(quotxe) {
         console.log(quote);
     }
 

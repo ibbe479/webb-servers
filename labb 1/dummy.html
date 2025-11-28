@@ -4,9 +4,12 @@
     <title>Ada Lovelace</title>
     <meta charset="utf-8"> 
     <script>
-         function goToSource(quote) {
-        console.log(quote);
+      function goToSource(quote) {
+        console.log(quote.innerHTML);
+        window.open(quote.cite);
     }
+
+    
     </script>
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -14,13 +17,13 @@
 
 <body>
     <header>
-       <h1 onclick="alert('Hi Charles!');">Ada Lovelace</h1>
+       <h1 onclick="alert('hej charls')">Ada Lovelace</h1>
     </header>
     
     <article>
             
         <section id="ingress">
-            <h2 onmouseover="style.color='red'" onmouseout="style.color='black'">Inledning</h2>
+            <h2 onmouseover="alert('sug min kuk')">Inledning</h2>
             <p>
                 Ada Lovelace, egentligen Augusta Ada King, grevinna av Lovelace, född Byron 10 december 1815 i London, död där 27 november 1852, var en engelsk matematiker och skribent. Hon är mest hågkommen för sitt arbete med Charles Babbages mekaniska dator, den analytiska maskinen. Hennes anteckningar om maskinen innehåller den första algoritm som är avsedd att bearbetas med en maskin. Därför beskrivs hon ofta som historiens första datorprogrammerare.
             </p>
@@ -73,15 +76,20 @@
         <section id="quotes">
             <h2>Citat av Ada Lovelace</h2>
             <h3>Ada inser att matematiska uttryck kan användas till annat än att hantera siffror</h3>
-            <blockquote onclick="go" cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
+
+            <blockquote onclick="goToSource(this)" cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
                 Den analytiska maskinen skulle kunna arbeta med andra ting vid sidan om tal, objekt vars ömsesidiga grundläggande relationer kunde uttryckas genom abstrakta vetenskapliga operationer, vilka också kan vara mottagliga för förändringar i hur maskinen hanterar de olika operationerna och i dess mekanism...
             </blockquote>
+
             <h3>Ada förkastar artificiell intelligens</h3>
-            <blockquote cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
+
+            <blockquote onclick="goToSource(this)"  cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
                 Den analytiska maskinen gör inga som helst anspråk på att skapa något eget. Den kan göra vad vi vill att den ska göra. Den kan följa analys, men den har ingen förmåga att förutse några analytiska relationer eller sanningar.
             </blockquote>
+
             <h3>Ada förutser kreativa datorprogram</h3>
-            <blockquote cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
+
+            <blockquote  onclick="goToSource(this)"  cite="https://sv.wikipedia.org/wiki/Ada_Lovelace#Hennes_arbete">
                 Anta, för ett ögonblick, att de fundamentala relationerna mellan specifika ljud i den vetenskapliga harmonin och musikskapandet var mottagliga för ett sådant uttryck och sådana förändringar. I så fall skulle maskinen kunna komponera invecklade och vetenskapliga musikstycken av vilken komplexitet eller längd som helst.
             </blockquote>
         </section>
@@ -106,6 +114,9 @@
             </ul>
         </section>
 
+        <script>
+            alert("free diddy");
+        </script>
     </article>
 </body>
 </html>
