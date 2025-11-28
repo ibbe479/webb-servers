@@ -3,14 +3,7 @@
 <head>
     <title>Ada Lovelace</title>
     <meta charset="utf-8"> 
-    <script>
-      function goToSource(quote) {
-        console.log(quote.innerHTML);
-        window.open(quote.cite);
-    }
-
     
-    </script>
     <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
@@ -18,12 +11,13 @@
 <body>
     <header>
        <h1 onclick="alert('hej charls')">Ada Lovelace</h1>
+       <h2 onmouseover="alert('sug min kuk')">test</h2>
     </header>
     
     <article>
             
         <section id="ingress">
-            <h2 onmouseover="alert('sug min kuk')">Inledning</h2>
+            <h2>Inledning</h2>
             <p>
                 Ada Lovelace, egentligen Augusta Ada King, grevinna av Lovelace, född Byron 10 december 1815 i London, död där 27 november 1852, var en engelsk matematiker och skribent. Hon är mest hågkommen för sitt arbete med Charles Babbages mekaniska dator, den analytiska maskinen. Hennes anteckningar om maskinen innehåller den första algoritm som är avsedd att bearbetas med en maskin. Därför beskrivs hon ofta som historiens första datorprogrammerare.
             </p>
@@ -38,6 +32,7 @@
             <p>
                 Ada Lovelace föddes 10 december 1815 som dotter till George Gordon Byron, den 6:e baronen av Byron, och Anne Isabella "Annabella" Milbanke, baronessa av Byron. George Byron förväntade sig att hans nya ättling skulle vara en pojke och blev besviken när hans fru födde fram en flicka. Den nyfödda gavs namnet Augusta efter Byrons halvsyster Augusta Leigh och kallades av Byron själv för "Ada".
             </p>
+            <p onclick="translatePhrase(this)">ada was born on the 10 december </p>
             <h3>Vuxna år</h3>
             <p>
                 Ada Lovelace utvecklade en fast och beständig relation till sin lärare Mary Somerville, till vilken den unga Ada närde en stor respekt och tillgivenhet. De två förblev brevvänner under lång tid. Andra bekanta var Andrew Crosse, Sir David Brewster, Charles Wheatstone, Charles Dickens och Michael Faraday. Från 1834 var Ada Lovelace en återkommande gäst vid det brittiska hovet och deltog där i diverse evenemang, inklusive baldanser.
@@ -115,8 +110,20 @@
         </section>
 
         <script>
-            alert("free diddy");
-        </script>
+      function goToSource(quote) {
+        console.log(quote.innerHTML);
+        window.open(quote.cite);
+    }
+
+    function translatePhrase(phrase){
+        let text= phrase.innerHTML;
+        let url="https://translate.google.com/?sl=en&tl=sv&op=translate&text=" + encodeURI(text)
+        window.open (url);
+
+    }
+
+    
+    </script>
     </article>
 </body>
 </html>
