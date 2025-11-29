@@ -6,12 +6,15 @@
     
     <link rel="stylesheet" type="text/css" href="style.css">
 
+    <script>
+    
+    </script>
 </head>
 
 <body>
     <header>
        <h1 onclick="alert('hej charls')">Ada Lovelace</h1>
-       <h2 onmouseover="alert('sug min kuk')">test</h2>
+       
     </header>
     
     <article>
@@ -132,9 +135,10 @@
 
     let test= document.createTextNode("test");
     document.querySelector('#links').appendChild(test);
-
+/*
     function booleify(element){
-        element.innerHTML = "Gerogo was here";
+        element.innerHTML = "George Boole was here";
+        element.classList.add('english');
     }
 
     document.querySelectorAll("h3").forEach((element) => {
@@ -142,7 +146,23 @@
     		booleify(event.target);
     	});
     });
+*/
 
+let boolcounter=0;
+const boolePhrase = "George Boole was here";
+function booleify(element){
+    if (element.innerHTML !== boolePhrase){
+        element.innerHTML=boolePhrase
+        element.classList.add('english');
+    	boolCounter++;
+    }
+}
+
+document.querySelectorAll("h3").forEach((element) => {
+    	element.addEventListener("click", (event) => {
+    		booleify(event.target);
+    	});
+    });
 
 
     test.remove();
