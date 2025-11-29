@@ -32,7 +32,7 @@
             <p>
                 Ada Lovelace föddes 10 december 1815 som dotter till George Gordon Byron, den 6:e baronen av Byron, och Anne Isabella "Annabella" Milbanke, baronessa av Byron. George Byron förväntade sig att hans nya ättling skulle vara en pojke och blev besviken när hans fru födde fram en flicka. Den nyfödda gavs namnet Augusta efter Byrons halvsyster Augusta Leigh och kallades av Byron själv för "Ada".
             </p>
-            <p onclick="translatePhrase(this)">ada was born on the 10 december </p>
+            <p><em class="english">ada was born on the 10 december </em></p>
             <h3>Vuxna år</h3>
             <p>
                 Ada Lovelace utvecklade en fast och beständig relation till sin lärare Mary Somerville, till vilken den unga Ada närde en stor respekt och tillgivenhet. De två förblev brevvänner under lång tid. Andra bekanta var Andrew Crosse, Sir David Brewster, Charles Wheatstone, Charles Dickens och Michael Faraday. Från 1834 var Ada Lovelace en återkommande gäst vid det brittiska hovet och deltog där i diverse evenemang, inklusive baldanser.
@@ -116,13 +116,36 @@
     }
 
     function translatePhrase(phrase){
-        let text= phrase.innerHTML;
+        let text= phrase.target.innerHTML;
         let url="https://translate.google.com/?sl=en&tl=sv&op=translate&text=" + encodeURI(text)
         window.open (url);
 
     }
 
+    document.querySelectorAll(".english").forEach((element) => {
+	element.addEventListener("click", translatePhrase);
+    });
     
+    let textnode = document.createTextNode("The busy have no time for tears.");
+    document.querySelector('#quotes').appendChild(textnode);
+    document.querySelector('#quotes').removeChild(textnode);
+
+    let test= document.createTextNode("test");
+    document.querySelector('#links').appendChild(test);
+
+    function booleify(element){
+        element.innerHTML = "Gerogo was here";
+    }
+
+    document.querySelectorAll("h3").forEach((element) => {
+    	element.addEventListener("click", (event) => {
+    		booleify(event.target);
+    	});
+    });
+
+
+
+    test.remove();
     </script>
     </article>
 </body>
