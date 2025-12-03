@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Johans enhörningsdatabas</title>
+<meta charset="UTF-8">
+<style type="text/css">
+table {
+  border-spacing: 10px;
+  border-collapse: separate;
+  cellspacing: 100px;
+  width: 1200px;
+}
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+<h1>Johans enhörningsdatabas</h1>
+<table>
+  <tr>
+    <td id="list">
+      <ul id="unicorns">
+        <li><a href="">Enhörning 1</a></li>
+        <li><a href="">Enhörning 2</a></li>
+        <li><a href="">Enhörning 3</a></li>
+      </ul>
+    </td>
+    <td id="info">
+      <h2 id="unicornName">Ingen enhörning</h2>
+      <span id="unicornImage"></span>
+      <p id="unicornInfo"></p>
+      <p id="unicornSighting"></p>
+    </td>
+  </tr>
+</table>
+<script type="text/javascript">
+/*
+ * Den här variabeln använder vi för att spara bas-URL:en som används i anropen.
+ */
+const baseURL = "http://unicorns.idioti.se/";
+
+async function listUnicorns() {
+  /*
+   * Enhörningsdatabasens dokumentation säger att vi ska göra ett GET-anrop och
+   * skicka med en Accept-header med värdet application/json.
+   */
+  const options = {
+    method: "GET",
+    headers: {
+      "Accept": "application/json"
+    }
+  };
+  /*
+   * Både fetch() och response.json() är asynkrona anrop, och måste därför
+   * skrivas med await.
+   */
+  const response = await fetch(baseURL, options);
+  const unicorns = await response.json();
+  console.log(unicorns);
+}
+
+listUnicorns();
+</script>
+</body>
+</html>
