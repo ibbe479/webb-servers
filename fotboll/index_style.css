@@ -1,0 +1,16 @@
+.card{
+margin: 5% auto;
+}
+
+.card-title{
+    margin: auto;
+}
+
+.card{
+    box-shadow: 10px 5px 5px #01005f;    
+}
+
+.card-body {
+  background-color: #1d3146;
+  color: white;
+}
