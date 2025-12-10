@@ -1,6 +1,10 @@
 html{
     background-color: darkslateblue;
 }
+
+body{
+    background-color: darkslateblue;
+}
 header h1{
     text-shadow: 7px 3px 3px #01005f;    
 }
@@ -14,3 +18,4 @@ header a{
     color: white;
     margin-top: 3%;
 }
+
